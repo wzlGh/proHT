@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        function fun_ajax(){
+            var XHRequest;
+            var v_show=document.getElementById("show");
+            if (window.XMLHttpRequest) {
+                XHRequest = new XMLHttpRequest();
+            }else if(window.ActiveXObject){
+                try{
+                    XHRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                }catch (e){
+                    XHRequest=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+            var v_name=document.getElementById("uname").value;
+            var v_pwd=document.getElementById("upwd").value;
+            var v_url="index.php?uname="+v_name+"&upwd="+v_pwd;
+            XHRequest.open('get',v_url,true)
+            XHRequest.onreadystatechange=function(){
+                if(XHRequest.status==200 && XHRequest.readyState==4){
+                    var str=XHRequest.responseText;
+//                    alert(str);
+                    if(str=="success"){
+                        location.href='index.html'
+
+                    }
+                    if(str=="loser"){
+                        v_show.innerHTML="请输入正确的用户名,是否"+"<span>忘记密码?</span>或"+"<span>忘记用户名?</span>";
+                        v_show.style.display="block";
+                        v_show.style.background="url('images/null.png') left no-repeat #fef2f2";
+                    }
+                    if(str=="null"){
+                        v_show.innerText="请输入账号名和密码"
+                        v_show.style.display="block";
+                        v_show.style.background="url('images/null.png') left no-repeat #fef2f2";
+                    }
+                }
+            }
+            XHRequest.send();
+        }
+        var v_uN=document.getElementById("uname");
+        function fun1(v1){
+            if(v_uN==null){
+                v1.value="";
+            }
+            v_uN+=v_uN;
+            document.getElementById("uname").style.color="black";
+            document.getElementById("img1").style.display="block";
+
+        }
+        function fun2(){
+            document.getElementById("uname").value="";
+        }
+        $(function(){
+            $("#uname").focus(function(){
+                $(this).val(" ");
+            });
+        });
+    </script>
+    <style>
+        body{
+            background:url(images/bg.jpg) center 0 no-repeat #000;
+        }
+        .wrapper{
+            margin-top: -50px;
+        }
+        .q1{
+            width:360px;
+            height: 400px;
+            margin:0 auto;
+            position: relative;
+            /*top: 50px;*/
+            background: white;
+            opacity: 0.9;
+        }
+        #title1{
+            width: 310px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            left: 10px;
+
+        }
+        #show{
+            background: #fef2f2;
+            border:1px solid #ffb4a9;
+            font-size: 12px;
+            padding-left: 36px;
+            color: #6d6d6d;
+            width: 274px;
+            height: 28px;
+            line-height: 28px;
+            display: none;
+            position: absolute;
+            top: 34px;
+            left: 22px;
+        }
+        input{
+            height: 36px;
+            width: 264px;
+            padding-left: 46px;
+            font:14px 微软雅黑;
+            color: #aeaeae;
+            border: 1px solid #dddddd;
+        }
+        #uname{
+            position: relative;
+            top: 100px;
+            left: 24px;
+            background: url("images/uname.png") left no-repeat;
+        }
+        #upwd{
+            position: relative;
+            top: 106px;
+            left: 24px;
+            background: url("images/pwd.png") left no-repeat;
+        }
+        button{
+            border-radius: 5px;
+            height: 46px;
+            width: 155px;
+            background: #2a33ff;
+            color: white;
+            font:bold 16px 微软雅黑;
+            border: none;
+            letter-spacing: 10px;
+            position: relative;
+            top: 160px;
+            left: 25px;
+        }
+        button:hover{
+            background: #4066f5;
+        }
+        #img1{
+            position: absolute;
+            top:102px;
+            left: 310px;
+            height: 36px;
+            display: none;
+        }
+        #install{
+            width: 80px;
+            height: 20px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            border-radius: 5px;
+            background: #a2aeac;
+            position: absolute;
+            top: 380px;
+            left: 280px;
+        }
+        #ht{
+            width: 80px;
+            height: 20px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            border-radius: 5px;
+            background: #a2aeac;
+            position: absolute;
+            top: 380px;
+            left: 0px;
+        }
+        #install:hover{
+            background: #ae9c99;
+        }
+        #ht:hover{
+            background: #ae9c99;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <nav>
+
+    </nav>
+    <h1><a href="index.html" id="logo">night club feel the rhythm</a></h1>
+</header>
+<div class="wrapper">
+    <div class="box">
+        <div class="q1">
+            <div id="title1">欢迎</div>
+            <div id="show"></div>
+            <input type="text" id="uname" value="请输入密码" onkeydown="fun1(this)"><br><br>
+            <input type="password" id="upwd"><br><br>
+            <button onclick="fun_ajax()">登录</button>
+            <button><a href="register.html">注册</a></button>
+            <button id="install">个人设置</button>
+            <button id="ht">后台设置</button>
+            <img src="images/reset.png" onclick="fun2()" id="img1">
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

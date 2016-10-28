@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <script src="js/jquery-1.8.2.js"></script>
+</head>
+<body id="page3">
+<div class="bg1">
+    <div class="main">
+        <!--header -->
+        <header>
+            <nav>
+                <ul id="menu">
+                        <li class="active"><a href="index.html">Club</a></li>
+                        <li><a href="Parties.html">聚会</a></li>
+                        <li id="menu1"><a href="Gallery.html">画廊</a></li>
+                        <li><a href="Residents.html">居民</a></li>
+                        <li><a href="News.html">新闻</a></li>
+                        <li><a href="Contacts.html">联系我们</a></li>
+                </ul>
+            </nav>
+            <h1><a href="index.html" id="logo">night club feel the rhythm</a></h1>
+        </header><div class="ic">More Website Templates @ TemplateMonster.com - October 03, 2011</div>
+        <!--header end-->
+        <div class="box">
+            <!--content -->
+            <article id="content">
+                <div class="wrapper">
+                    <h2>Rnb画廊</h2>
+                    <dl class="folio">
+                        <dt>
+                            <img src="images/gallery_big_img1.jpg" alt="" id="img1" />
+                            <img src="images/gallery_big_img2.jpg" alt="" id="img2" />
+                            <img src="images/gallery_big_img3.jpg" alt=""  class="active" id="img3" />
+                            <img src="images/gallery_big_img4.jpg" alt="" id="img4" />
+                            <img src="images/gallery_big_img5.jpg" alt="" id="img5" />
+                            <img src="images/gallery_big_img6.jpg" alt="" id="img6" />
+                            <img src="images/gallery_big_img7.jpg" alt="" id="img7" />
+                            <img src="images/gallery_big_img8.jpg" alt="" id="img8" />
+                            <img src="images/gallery_big_img9.jpg" alt="" id="img9" />
+                        </dt>
+                        <dd>
+                            <ul class="marg_right1">
+                                <li><a href="#img1"><img src="images/gallery_img1.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img2"><img src="images/gallery_img2.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img3"><img src="images/gallery_img3.jpg" alt="" width="260" height="171" /></a></li>
+                            </ul>
+                            <ul class="marg_right1">
+                                <li><a href="#img4"><img src="images/gallery_img4.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img5"><img src="images/gallery_img5.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img6"><img src="images/gallery_img6.jpg" alt="" width="260" height="171" /></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#img7"><img src="images/gallery_img7.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img8"><img src="images/gallery_img8.jpg" alt="" width="260" height="171" /></a></li>
+                                <li><a href="#img9"><img src="images/gallery_img9.jpg" alt="" width="260" height="171" /></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </article>
+            <!--content end-->
+            <!--footer -->
+            <footer>
+                <div class="line1">
+                    <div class="line2 wrapper">
+                        <div class="icons">
+                            <h4>联系我们</h4>
+                            <ul id="icons">
+                                <li><a href="#" class="normaltip" title="Reddit"><img src="images/icon1.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Flickr"><img src="images/icon2.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Twitter"><img src="images/icon3.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Facebook"><img src="images/icon4.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Rss"><img src="images/icon5.jpg" alt=""></a></li>
+                            </ul>
+                            <!-- {%FOOTER_LINK} -->
+                        </div>
+                        <div class="info">
+                            <h4>关于我们</h4>
+                            <ul>
+                                <li><a href="#">俱乐部信息</a></li>
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">DJ 台</a></li>
+                                <li><a href="#">新闻</a></li>
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <h4>Join In</h4>
+                            <ul>
+                                <li><a href="login.html">登录</a></li>
+                                <li><a href="#">论坛</a></li>
+                                <li><a href="#">销售</a></li>
+                            </ul>
+                        </div>
+                        <div class="phone">
+                            <h4>订票</h4>
+                            <p>空闲电话<span>8-800-123-晚</span></p>
+                        </div>
+                    </div>
+                    <a href="#">网站模版 by TemplateMonster.com</a>
+                </div>
+            </footer>
+            <!--footer end-->
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        var Img='#'+$(".folio .active").attr('id')
+        $(".folio dt img").css({opacity:'0'});
+        $(".folio dt img.active").css({opacity:'1'});
+        $(".folio ul li a").click(function(){
+            var ImgId = $(this).attr("href");
+            if (ImgId!=Img) {
+                $(".folio dt .active").animate({ opacity: "0" }, 600,function(){
+                    $(this).removeClass('active');
+                })
+                $(ImgId).animate({ opacity: "1" }, 600).addClass('active');
+            }
+            Img=ImgId;
+            return false;
+        })
+    });
+</script>
+</body>
+</html>

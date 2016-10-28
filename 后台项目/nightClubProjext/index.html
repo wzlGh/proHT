@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            var timer;
+            var i=1;
+
+            function fun2(){
+                i++;
+                if(i<3){
+                    $("#gallery1 ul").append($("#gallery1 ul li:first"));
+                }
+                if(i>=3){
+                    i=0
+                    $("#gallery1 ul").append($("#gallery1 ul li:first"));
+                }
+            }
+            timer=setInterval(fun2,2000)
+            $("div ul li").hover(function(){
+                clearInterval(timer);
+            },function(){
+                timer=setInterval(fun2,2000)
+            })
+            $(".next").click(function(){
+                clearInterval(timer);
+                $("#gallery1 ul").append($("#gallery1 ul li:first"));
+            })
+            $(".prev").click(function(){
+                clearInterval(timer);
+                $("#gallery1 ul").append($("#gallery1 ul li:first"));
+            })
+        });
+
+    </script>
+</head>
+<body id="page1">
+<div class="bg1">
+    <?php
+    //读取session
+    session_start();
+    if(!empty($_SESSION['uname'])){
+    ?>
+    <span style="position: fixed;top: 0;">欢迎您，<span style="color:red"><?php echo $_SESSION['uname']?></span> 进入我们的网站！</span><br><br>
+    <?php
+    }
+    ?>
+    <div class="main">
+        <header>
+            <nav>
+                <ul id="menu">
+                    <li class="active" id="menu0"><a href="index.html">Club</a></li>
+                    <li><a href="Parties.html">聚会</a></li>
+                    <li><a href="Gallery.html">旁观者</a></li>
+                    <li><a href="Residents.html">居民</a></li>
+                    <li><a href="News.html">新闻</a></li>
+                    <li><a href="Contacts.html">联系我们</a></li>
+                </ul>
+            </nav>
+            <h1><a href="index.html" id="logo">night club feel the rhythm</a></h1>
+        </header><div class="ic">更多网站模版 @ TemplateMonster.com - July 01, 2016</div>
+        <div class="box">
+            <!--content -->
+            <article id="content">
+                <div class="wrapper pad_bot1">
+                    <section class="col1">
+                        <h2 id="welcom">Hello!</h2>
+                        <p class="color1">night club是一个 以<a href="#" class="color1 col1_a">玩，玩，还是玩</a> 为主题创建。这个网站以一部在小说阅读网连载的小说为思想，就是一个网上夜总会.</p>
+                        <p class="pad_bot1">这个 <a href="#" class="col1_a">Night Club</a>以一部在小说阅读网连载的小说为思想，就是一个网上夜总会.</p>
+                        <a href="#" class="link1">Read More</a>
+                    </section>
+                    <section class="col1 pad_left1">
+                        <h2>最近更新</h2>
+                        <div id="gallery1">
+                            <ul>
+                                <li>
+                                    <span class="dropcap_1">30<span>June</span></span>
+                                    <p><span class="color1">夜总会</span><br>
+                                        即夜生活娱乐场所设有舞池、乐队或DJ，提供歌舞表演<br>
+                                        <a href="#" class="link1">查看详细信息</a></p>
+                                </li>
+                                <li>
+                                    <span class="dropcap_1">26<span>June</span></span>
+                                    <p><span class="color1">微广告</span><br>
+                                        微视频广告的简称，是一种全新的、逆向型的类视频广告宣传概念。旨在探寻挖掘新颖、另类的宣传效应。 <br>
+                                        <a href="#" class="link1">查看详细信息</a></p>
+                                </li>
+                                <li>
+                                    <span class="dropcap_1">24<span>June</span></span>
+                                    <p><span class="color1">66666</span><br>
+                                        即夜生活娱乐场所设有舞池、乐队或DJ，提供歌舞表演<br>
+                                        <a href="#" class="link1">查看详细信息</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="next"></div>
+                        <div class="prev"></div>
+                    </section>
+                </div>
+                <div class="wrapper">
+                    <h2>Next Party</h2>
+                    <div class="wrapper">
+                        <figure class="left marg_right1"><a href="#"><img src="images/banner1.jpg" alt=""></a></figure>
+                        <h3>欧洲最佳节奏蓝调</h3>
+                        <p class="pad_bot1">节奏布鲁斯（英语：Rhythm and Blues，简称：R&B或RnB，或作节奏蓝调 ），又称节奏怨曲。</p>
+                        <ul class="list1 pad_bot1">
+                            <li><a href="#">《“布鲁斯名家”第五辑：“跳跃布鲁斯”经典》(Blues Masters Volume 5:Jump Blues Classics)(Rhino)</a></li>
+                            <li><a href="#">《路易斯·乔丹精选》(The Best Of Louis Jordan)(MCA)</a></li>
+                            <li><a href="#">《“大西洋”节奏布鲁斯 1-4辑》(Atlantic Rhythm&Blues Vol.1-4)(Atlantic)</a></li>
+                            <li><a href="#">《“专业”的故事》(Specialty Story)(Specialty)</a></li>
+                        </ul>
+                        <p>布鲁斯无疑是R&B的一个重要组成部分，但爵士乐元素也同等重要。首先由非裔美国人艺术家所演奏，融合了爵士乐、福音音乐和电子布鲁斯音乐的音乐类型。</p>
+                    </div>
+                </div>
+            </article>
+
+            <!--footer-->
+            <footer>
+                <div class="line1">
+                    <div class="line2 wrapper">
+                        <div class="icons">
+                            <h4>联系我们</h4>
+                            <ul id="icons">
+                                <li><a href="#" class="normaltip" title="Reddit"><img src="images/icon1.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Flickr"><img src="images/icon2.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Twitter"><img src="images/icon3.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Facebook"><img src="images/icon4.jpg" alt=""></a></li>
+                                <li><a href="#" class="normaltip" title="Rss"><img src="images/icon5.jpg" alt=""></a></li>
+                            </ul>
+                            <!-- {%FOOTER_LINK} -->
+                        </div>
+                        <div class="info">
+                            <h4>关于我们</h4>
+                            <ul>
+                                <li><a href="#">俱乐部信息</a></li>
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">DJ 台</a></li>
+                                <li><a href="#">新闻</a></li>
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <h4>Join In</h4>
+                            <ul>
+                                <li><a href="login.html">登录</a></li>
+                                <li><a href="#">论坛</a></li>
+                                <li><a href="#">销售</a></li>
+                            </ul>
+                        </div>
+                        <div class="phone">
+                            <h4>订票</h4>
+                            <p>空闲电话<span>8-800-123-晚</span></p>
+                        </div>
+                    </div>
+                    <a href="#">网站模版 by TemplateMonster.com</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
